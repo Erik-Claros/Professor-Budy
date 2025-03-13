@@ -488,6 +488,9 @@ body {
   
   /* End of container */
   .hexagon-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     width: 200px;
     height: 173.20508px;
@@ -572,7 +575,7 @@ body {
       -o-transform-origin: center center;
       transform-origin: center center; }
       .hex-item div::before, .hex-item div::after {
-        background-color: #1e2530;
+        background: linear-gradient(135deg, #3b3e5a 0%, #1E1F26 100%);
         content: "";
         position: absolute;
         width: 100%;
@@ -747,6 +750,13 @@ body {
   }
     
   }
+
+
+  /* Center the entire hexagon menu container */
+  .intro-screen{
+    background: linear-gradient(135deg, #3b3e5a 0%, #1E1F26 100%);
+  }
+
   
   
   

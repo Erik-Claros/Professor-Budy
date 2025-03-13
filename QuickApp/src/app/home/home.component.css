@@ -1,4 +1,5 @@
 /* Hero Section Styles */
+
 .hero-section {
     display: flex;
     align-items: center;
@@ -11,6 +12,7 @@
     color: #fff;
     text-align: center;
     position: relative;
+    font-family: 'Poppins', sans-serif; /* A modern, trendy font from Google Fonts */
 }
 
 /* Add a subtle overlay for better text contrast */
@@ -77,65 +79,82 @@
     background-color: #0056b3;
     transform: scale(1.05);
 }
+.gradient-container {
+    background: linear-gradient(135deg, #3b3e5a 0%, #1E1F26 100%);
+  }
 
 .features-section {
     display: flex;
-    justify-content: space-around;
-    gap: 20px;
-    padding: 40px 20px;
-    background-color: #f9f9f9;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;    /* Center items horizontally */
+    justify-content: center;
+    padding: 40px 20px; /* Decreased from 60px */
     text-align: center;
-    flex-wrap: wrap; /* Makes the cards responsive */
+    color: #fff; /* White text stands out on vibrant backgrounds */
+    font-family: 'Poppins', sans-serif; /* A modern, trendy font from Google Fonts */
 }
 
-.feature-card {
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds a soft shadow */
-    padding: 20px;
-    flex: 1;
-    max-width: 300px;
-    margin: 10px; /* Space between cards */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover */
-}
+.features-section h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
 
-.feature-card:hover {
-    transform: scale(1.05); /* Slightly enlarges the card on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Adds a deeper shadow on hover */
-}
-
-.feature-icon {
-    width: 80px; /* Adjust as needed */
-    height: 80px;
-    margin-bottom: 15px;
-    border-radius: 50%; /* Makes the image circular */
-    background: #f0f0f0; /* Background behind the icon for contrast */
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds a soft shadow to the icon */
-}
-
-.feature-card h3 {
+  .tagline {
     font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #333;
-}
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+  .features-text {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
 
-.feature-card p {
-    font-size: 1rem;
-    color: #666;
-}
+  .wave-divider {
+    width: 80px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 1rem auto;
+  }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .features-section {
-        flex-direction: column; /* Stacks the cards vertically on smaller screens */
-        align-items: center;
+  .feature-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 1rem auto;
+    text-align: left;
+    color: #fff;
+  }
+  .feature-highlights li {
+    margin: 0.75rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 1.1rem;
+  }
+  .feature-highlights li::before {
+    content: '➜';
+    position: absolute;
+    left: 0;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .features-section {
+    opacity: 0;
+    animation: fadeIn 1.2s forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
     }
+  }
+  
+  
 
-    .feature-card {
-        max-width: 90%; /* Makes the cards fill most of the screen width */
-    }
-}
 
 .success-stories {
     padding: 60px 20px;
@@ -257,3 +276,344 @@ blockquote {
         width: 150px;
     }
 }
+
+.feature-highlights {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 30px;
+}
+
+.feature-highlights .drop {
+    width: 400px; /* Increase bubble size */
+    height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    box-shadow: inset 20px 20px 20px rgba(0,0,0,0.05),
+                25px 35px 20px rgba(0,0,0,0.05),
+                25px 20px 20px rgba(0,0,0,0.05),
+                inset 25px 30px 30px rgba(255,255,255,0.9);
+    animation: slide 3s linear;
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.feature-highlights .drop:nth-child(1) {
+    border-radius: 67% 33% 28% 72% / 59% 52% 48% 41%;
+    margin: 20px 30px 30px 0;
+}
+.feature-highlights .drop:nth-child(2) {
+    border-radius: 15% 85% 53% 47% / 55% 41% 59% 45%;
+    margin: 20px 30px 30px 0;
+}
+.feature-highlights .drop:nth-child(3) {
+    border-radius: 50% 50% 30% 70% / 60% 40% 60% 40%;
+    margin: 20px 30px 30px 0;
+}
+
+.feature-highlights .drop::before {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background-color: #ffffffc8;
+    top: 60px;
+    left: 80px;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+.feature-highlights .drop::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #ffffffc8;
+    top: 90px;
+    left: 110px;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.feature-highlights .drop .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 40px 60px;
+    gap: 15px;
+}
+
+.feature-highlights .drop .content h2 {
+    margin-bottom: 15px;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: var(--clr);
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.1),
+                inset -2px -5px 10px rgba(255,255,255,1),
+                15px 15px 10px rgba(0,0,0,0.05),
+                15px 10px 15px rgba(0,0,0,0.25);
+}
+
+/* Remove or adjust this media query to keep them large on smaller screens */
+@media only screen and (max-width:1200px) {
+    .feature-highlights .drop {
+        width: 350px; /* or some other size */
+        height: 350px;
+    }
+    .feature-highlights {
+        flex-direction: column;
+    }
+}
+@media only screen and (max-width:600px) {
+    .feature-highlights {
+        flex-direction: column;
+    }
+}
+/* "How It Works" Section Wrapper */
+.how-it-works {
+    color: #fff; /* White text stands out on bright backgrounds */
+    font-family: 'Poppins', sans-serif; /* Matches your existing fonts */
+  }
+  
+  /* Layout */
+  .how-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 30px;
+  }
+  
+  /* Text/Steps Container */
+  .how-content {
+    flex: 1 1 500px; /* Takes up space but can shrink on smaller devices */
+    min-width: 300px;
+  }
+  
+  /* Title and Subtitle */
+  .how-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .how-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #ffdada; /* A lighter shade for subtle contrast */
+  }
+  
+  /* Steps List */
+  .steps-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: steps;
+  }
+  
+  /* Each Step */
+  .step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    gap: 15px; /* Space between number and text */
+  }
+  
+  /* Step Number Circle */
+  .step-number {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 36px; /* Center text vertically */
+    color: #fff;
+  }
+  
+  /* Step Info (Title + Description) */
+  .step-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .step-info p {
+    margin: 5px 0 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  /* Character Image Container */
+  .how-image-container {
+    flex: 1 1 400px; /* Adjust to suit your layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 300px;
+  }
+  
+  /* Character Image */
+  .how-character {
+    width: 70%;
+    max-width: 300px;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .how-wrapper {
+      flex-direction: column;
+      text-align: center;
+    }
+    .how-content {
+      order: 2; /* Move text below the image if desired */
+    }
+    .how-image-container {
+      order: 1; /* Move image above the text if desired */
+    }
+  }
+
+  /* Main Section Wrapper */
+  .mission-full-bubbles {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+  }
+  .highlight{
+    color: #229b1e;
+  }
+  
+  /* Left (Dark) Side */
+  .left-side {
+    flex: 0 0 45%; 
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+    box-sizing: border-box;
+  }
+  
+  /* Right (Light) Side */
+  .right-side {
+    flex: 1; 
+    background-color: #f2f2f2;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 30px; /* right side padding can be smaller on the right edge */
+    box-sizing: border-box;
+  }
+  
+  /* Bubble Container: full width to the center boundary */
+  .bubble-container {
+    width: 100%; /* let it stretch to the left boundary (center dividing line) */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* space between bubble items */
+  }
+  
+  /* Each Bubble */
+  .bubble-item {
+    display: flex;
+    align-items: flex-start;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    /* Make the bubble fill up the container’s width */
+    width: 100%; 
+    box-sizing: border-box;
+    gap: 15px;
+  }
+  
+  /* Icon styling */
+  .bubble-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #e8fcef;
+    color: #28b485;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+  
+  /* Bubble text area */
+  .bubble-text {
+    flex: 1; /* Fill remaining space */
+  }
+  .bubble-title {
+    margin: 0 0 5px;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .bubble-desc {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+  }
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .section-title .highlight {
+    color: #37d67a; /* accent color for 'Mission' */
+  }
+  .section-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    max-width: 500px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .mission-full-bubbles {
+      flex-direction: column;
+    }
+    .left-side, .right-side {
+      flex: 0 0 auto;
+      width: 100%;
+      padding: 40px;
+    }
+    .bubble-container {
+      width: 100%; /* still fills the entire right side */
+    }
+  }
+  
+  
+  

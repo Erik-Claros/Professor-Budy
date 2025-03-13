@@ -10,8 +10,17 @@ nav{
   top: 0px;
   z-index: 99;
   width: 100%;
-  
-  background: #2b2d42;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.6)
+  );
+  backdrop-filter: blur(10px); /* Glass effect */
+  transition: all 0.3s ease-in-out;
+  padding: 15px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Light outline */
+  border-radius: 10px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
 }
 nav .wrapper{
   position: relative;
@@ -67,13 +76,21 @@ nav .wrapper{
 }
 .nav-links .drop-menu{
   position: absolute;
-  background: #2b2d42;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.6)
+  );
+  backdrop-filter: blur(10px); /* Glass effect */
   width: 180px;
   line-height: 45px;
   top: 85px;
   opacity: 0;
   visibility: hidden;
   box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+  border-radius: 10px;                /* Rounded corners */
+  overflow: hidden;                   /* Ensures background and hover effect don’t overflow */
+  border: 1px solid rgba(255,255,255,0.2); /* Optional subtle border */
 }
 .nav-links .profile-title {
   color: #fff; /* White color for text */
@@ -92,6 +109,7 @@ nav .wrapper{
   opacity: 1;
   visibility: visible;
 }
+
 .drop-menu li a{
   width: 100%;
   display: block;
@@ -109,12 +127,20 @@ nav .wrapper{
   visibility: hidden;
 }
 .mega-box .content{
-  background: #2b2d42;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.6)
+  );
+  backdrop-filter: blur(10px); /* Glass effect */
   padding: 25px 20px;
   display: flex;
   width: 100%;
   justify-content: space-between;
   box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+  border-radius: 10px;                /* Rounded corners */
+  overflow: hidden;                   /* Ensures background and hover effect don’t overflow */
+  border: 1px solid rgba(255,255,255,0.2); /* Optional subtle border */
 }
 .mega-box .content .row{
   width: calc(25% - 30px);
@@ -171,7 +197,12 @@ nav .wrapper{
     max-width: 350px;
     top: 0;
     left: -100%;
-    background: #2b2d42;
+    background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.6)
+  );
+  backdrop-filter: blur(10px); /* Glass effect */
     display: block;
     padding: 50px 10px;
     line-height: 50px;
