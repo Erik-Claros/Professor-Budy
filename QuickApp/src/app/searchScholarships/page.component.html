@@ -1,19 +1,30 @@
 <div class="page-content">
   <!-- Interest Picker -->
   <div class="interest-container">
-    <!-- Interest Picker -->
+    <!-- Interest Picker with Accordion -->
     <div class="interest-picker">
       <div class="category" *ngFor="let category of categorizedInterests">
-        <h3 class="category-title">{{ category.name }}</h3>
-        <div class="interests-list">
-          <label *ngFor="let interest of category.interests">
-            <input 
-              type="checkbox" 
-              [value]="interest" 
-              (change)="onInterestChange($event, interest)" 
-            />
-            {{ interest }}
-          </label>
+        <!-- Accordion Header -->
+        <div class="accordion-header" (click)="toggleCategory(category.name)">
+          <h3 class="category-title">{{ category.name }}</h3>
+          <span class="toggle-icon" [class.expanded]="!isCollapsed(category.name)">
+            <!-- Using a chevron icon (down arrow) -->
+            &#9660;
+          </span>
+        </div>
+        <!-- Accordion Body -->
+        <div class="accordion-body" [ngClass]="{'hidden': isCollapsed(category.name)}">
+          <div class="interests-list">
+            <label *ngFor="let interest of category.interests" 
+                   [class.checked]="selectedInterests.includes(interest)">
+              <input 
+                type="checkbox" 
+                [value]="interest" 
+                (change)="onInterestChange($event, interest)" 
+              />
+              {{ interest }}
+            </label>
+          </div>
         </div>
       </div>
     </div>
@@ -39,12 +50,13 @@
     </div>
 
     <div class="bot-response">
-      <ng-container *ngIf="loading">
-        <p class="title speech-bubble-text">thinking...</p>
-    </ng-container>
       <h4>Bot's Response:</h4>
-      <p>{{ premadResponse }}</p>
+      <div class="speech-bubble" *ngIf="loading">
+        <p>thinking...</p>
+      </div>
+      <div class="speech-bubble" *ngIf="!loading && premadResponse">
+        <p>{{ premadResponse }}</p>
+      </div>
     </div>
   </div>
-
-  
+</div>

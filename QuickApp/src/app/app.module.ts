@@ -24,6 +24,11 @@ import { PostfeedComponent } from './postfeed/postfeed.component';
 import { PostComponent } from './post/post.component';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { QuillModule } from 'ngx-quill';
+import { ScholarshipsComponent } from './learning_center/scholarships/scholarships.component';
+import { LoansComponent } from './learning_center/loans/loans.component';
+import { CreditComponent } from './learning_center/credit/credit.component';
+import { TaxesComponent } from './learning_center/taxes/taxes.component';
+import { ScamsComponent } from './learning_center/scams/scams.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +43,11 @@ import { QuillModule } from 'ngx-quill';
     CreatePostComponent,
     PostfeedComponent,
     PostComponent,
+    ScholarshipsComponent,
+    LoansComponent,
+    CreditComponent,
+    TaxesComponent,
+    ScamsComponent,
   ],
   imports: [
     BrowserModule,
