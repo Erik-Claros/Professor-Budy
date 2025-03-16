@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GeminiService } from '../gemini.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { GeminiService } from '../gemini.service';
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.css']
 })
-export class PageComponent {
+export class PageComponent implements OnInit {
   school: string = '';
   prompt: string = '';
   jsonResponse: any = null;
@@ -15,12 +15,13 @@ export class PageComponent {
   adviceType: string = 'positive';
   topic: string = 'scholarships';
   premadResponse: string = '';
+  scholarships: any[] = [];
 
   categorizedInterests: { name: string, interests: string[] }[] = [
     { name: 'Hobbies', interests: ['Reading', 'Gaming', 'Cooking', 'Gardening', 'DIY Projects', 'Crafts'] },
     { name: 'Activities', interests: ['Sports', 'Travel', 'Fitness', 'Volunteering', 'Outdoor Adventures', 'Music Festivals'] },
     { name: 'Art & Culture', interests: ['Music', 'Art', 'Photography', 'Theater', 'Dance', 'Literature'] },
-    { name: 'Technology', interests: ['Technology', 'Programming', 'Gaming', 'Robotics', 'AI', 'Web Development'] },
+    { name: 'Technology', interests: ['Technology', 'Programming', 'Robotics', 'AI', 'Web Development'] },
     { name: 'College Life', interests: ['Campus Events', 'Student Organizations', 'Academic Clubs', 'Study Groups', 'Networking Events', 'Career Services'] },
     { name: 'Academic Interests', interests: ['STEM', 'Humanities', 'Social Sciences', 'Business', 'Health Sciences', 'Arts'] },
     { name: 'Campus Resources', interests: ['Library', 'Academic Advising', 'Counseling Services', 'Fitness Center', 'Dining Options', 'Student Housing'] },
@@ -33,10 +34,20 @@ export class PageComponent {
   ];
   selectedInterests: string[] = [];
 
-  // To track collapsed categories
-  collapsedCategories: string[] = this.categorizedInterests.map(c => c.name); // all collapsed initially
+  // To track collapsed categories (all collapsed initially)
+  collapsedCategories: string[] = this.categorizedInterests.map(c => c.name);
 
-  onInterestChange(event: any, interest: string) {
+  ngOnInit(): void {
+    // Check if localStorage is available
+    if (typeof localStorage !== 'undefined') {
+      const storedInterests = localStorage.getItem('selectedInterests');
+      if (storedInterests) {
+        this.selectedInterests = JSON.parse(storedInterests);
+      }
+    }
+  }
+
+  handleInterestChange(event: any, interest: string) {
     if (event.target.checked) {
       this.selectedInterests.push(interest);
     } else {
@@ -45,7 +56,12 @@ export class PageComponent {
         this.selectedInterests.splice(index, 1);
       }
     }
+    // Persist to localStorage if available
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('selectedInterests', JSON.stringify(this.selectedInterests));
+    }
   }
+  
 
   // Toggle category collapse state
   toggleCategory(categoryName: string): void {
@@ -70,20 +86,15 @@ export class PageComponent {
       return;
     }
 
-    const prompt = `Please find scholarships related to ${this.selectedInterests.join(', ')}. I'm planning to attend ${this.school}. 
-
-Please provide the results in the following JSON format:
+    const prompt = `"Please find scholarships related to ${this.selectedInterests.join(', ')} for students planning to attend ${this.school}. Return only valid JSON, without any additional text or commentary, in the following format:
 
 {
   "scholarships": [
     {
       "name": "Scholarship Name",
       "requirements": "Eligibility requirements and criteria for the scholarship.",
-      "application_deadline": "Application deadline date.",
-      "how_to_apply": "Instructions or a link on how to apply.",
-      "additional_info": "Any other relevant information, such as award amount or specific considerations."
-    },
-    ...
+      "application_deadline": "Application deadline date."
+    }
   ]
 }
 
@@ -97,7 +108,32 @@ Make sure the information is up-to-date and includes working links to the applic
     if (promptToSend) {
       this.loading = true;
       this.premadResponse = '';
-      this.premadResponse = await this.geminiService.generatePreMadeText(promptToSend);
+      try {
+        let responseText = await this.geminiService.generatePreMadeText(promptToSend);
+        console.log("Raw API Response:", responseText);
+
+        // Remove markdown code block markers if present
+        if (responseText.startsWith("```")) {
+          responseText = responseText.replace(/^```[^\n]*\n/, "").replace(/\n```$/, "").trim();
+        }
+
+        // Attempt to parse the cleaned responseText
+        try {
+          const parsed = JSON.parse(responseText);
+          if (parsed.scholarships && Array.isArray(parsed.scholarships)) {
+            this.scholarships = parsed.scholarships;
+          } else {
+            console.error("Parsed JSON does not contain a valid scholarships array.");
+            this.scholarships = [];
+          }
+        } catch (jsonError) {
+          console.error("Error parsing JSON:", jsonError);
+          this.scholarships = [];
+        }
+        this.premadResponse = responseText;
+      } catch (error) {
+        console.error("Error calling Gemini API:", error);
+      }
       this.loading = false;
     }
   }

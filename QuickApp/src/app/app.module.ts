@@ -29,6 +29,10 @@ import { LoansComponent } from './learning_center/loans/loans.component';
 import { CreditComponent } from './learning_center/credit/credit.component';
 import { TaxesComponent } from './learning_center/taxes/taxes.component';
 import { ScamsComponent } from './learning_center/scams/scams.component';
+import { FindLoansComponent } from './find-loans/find-loans.component';
+import { StudyTipsComponent } from './success_center/study-tips/study-tips.component';
+import { LifeHacksComponent } from './success_center/life-hacks/life-hacks.component';
+import { WellnessBalanceComponent } from './success_center/wellness-balance/wellness-balance.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,10 @@ import { ScamsComponent } from './learning_center/scams/scams.component';
     CreditComponent,
     TaxesComponent,
     ScamsComponent,
+    FindLoansComponent,
+    StudyTipsComponent,
+    LifeHacksComponent,
+    WellnessBalanceComponent,
   ],
   imports: [
     BrowserModule,

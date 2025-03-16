@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap");
+
+
+.container {
+    min-height: 100vh;
+	display: grid;
+	place-items: center;
+	background-color: var(--white);
+}
+
+.vertical-text {
+    position: absolute;
+    font-family: "Raleway", sans-serif;
+    font-weight: 900;
+    font-size: 4.5rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    opacity: 0.9;
+    writing-mode: vertical-lr; /* text flows top-to-bottom */
+    text-orientation: upright; /* letters stay upright */
+    
+    /* Gradient from gold (#FFD700) to white, top to bottom */
+    background: linear-gradient(to bottom, #FFD700 0%, #0c0101de 100%);
+    -webkit-background-clip: text; /* Ensures the gradient only fills text */
+    background-clip: text;
+    color: transparent; /* Hide the actual text color so the gradient is visible */
+    
+  }
+  
+  /* Left side: WELLNESS */
+  .wellness-text {
+    left: 20%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  /* Right side: BALANCE */
+  .balance-text {
+    right: 20%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+.poster {
+	width: 80vmin;
+	height: 90vmin;
+	background: url("https://www.sicontis.com/codepen/cpc-quote-poster/bruce-lee.png");
+	background-size: cover;
+	background-position: 50% 0%;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+.quote {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	width: 40vmin;
+	font-family: "Raleway", sans-serif;
+	font-size: 5.5vmin;
+	line-height: 5.5vmin;
+	text-transform: uppercase;
+	text-align: right;
+	padding-right: 0.3em;
+	position: relative;
+	z-index: 2;
+	color: #000000;
+	background-color: var(--white);
+	mix-blend-mode: lighten;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+.quotemark {
+	position: absolute;
+	top: 10vmin;
+	left: 5vmin;
+	z-index: 3;
+}
+.quotemark svg {
+	width: 10vmin;
+	height: 10vmin;
+	fill: #e7e7e7;
+}
+
+.signature {
+	height: clamp(70px, 10vw, 120px);
+	position: absolute;
+	bottom: 8vmin;
+	left: 18vmin;
+	z-index: 4;
+}
+.signature svg {
+	width: 100%;
+	height: 100%;
+}
+.signature svg path {
+	fill: #323232;
+}
+
+@media (max-width: 768px) {
+    .wellness-text, .balance-text {
+        display: none;
+    }
+}

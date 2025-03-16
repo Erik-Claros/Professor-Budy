@@ -1,4 +1,7 @@
 <div class="page-content">
+  <header class="header">
+    <h1>Scholarships</h1>
+  </header>
   <!-- Interest Picker -->
   <div class="interest-container">
     <!-- Interest Picker with Accordion -->
@@ -8,7 +11,6 @@
         <div class="accordion-header" (click)="toggleCategory(category.name)">
           <h3 class="category-title">{{ category.name }}</h3>
           <span class="toggle-icon" [class.expanded]="!isCollapsed(category.name)">
-            <!-- Using a chevron icon (down arrow) -->
             &#9660;
           </span>
         </div>
@@ -17,11 +19,13 @@
           <div class="interests-list">
             <label *ngFor="let interest of category.interests" 
                    [class.checked]="selectedInterests.includes(interest)">
-              <input 
-                type="checkbox" 
-                [value]="interest" 
-                (change)="onInterestChange($event, interest)" 
-              />
+                   <input 
+                   type="checkbox" 
+                   [value]="interest" 
+                   [checked]="selectedInterests.includes(interest)"
+                   (change)="handleInterestChange($event, interest)" 
+                 />
+                 
               {{ interest }}
             </label>
           </div>
@@ -46,17 +50,32 @@
     </div>
     
     <div class="submit-container">
-      <button (click)="sendInterestData()">Submit Interests</button>
+      <button (click)="sendInterestData()">Feeling Lucky</button>
     </div>
 
+    <!-- Bot Response -->
     <div class="bot-response">
-      <h4>Bot's Response:</h4>
       <div class="speech-bubble" *ngIf="loading">
         <p>thinking...</p>
       </div>
-      <div class="speech-bubble" *ngIf="!loading && premadResponse">
-        <p>{{ premadResponse }}</p>
+    </div>
+
+    <!-- Scholarships Display -->
+    <div class="scholarship-results" *ngIf="!loading && scholarships.length > 0">
+      <h2>Scholarship Opportunities Found</h2>
+      <div class="scholarship-cards">
+        <div class="scholarship-card" *ngFor="let sch of scholarships">
+          <h3>{{ sch.name }}</h3>
+          <p><strong>Requirements:</strong> {{ sch.requirements }}</p>
+          <p><strong>Deadline:</strong> {{ sch.application_deadline }}</p>
+          <p>
+            <strong>How to Apply:</strong>
+            <a [href]="sch.how_to_apply" target="_blank" rel="noopener">{{ sch.how_to_apply }}</a>
+          </p>
+          <p><strong>Additional Info:</strong> {{ sch.additional_info }}</p>
+        </div>
       </div>
     </div>
+    
   </div>
 </div>

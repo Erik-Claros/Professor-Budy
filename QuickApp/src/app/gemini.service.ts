@@ -11,11 +11,12 @@ export class GeminiService {
   private generativeAi:GoogleGenerativeAI;
   private messageHistory: BehaviorSubject<any> = new BehaviorSubject(null);
   constructor() { 
+    console.log("Using Gemini API Key:", environment.googleGenerativeAIKey);
     this.generativeAi = new GoogleGenerativeAI(environment.googleGenerativeAIKey);
   }
 
   async generateText(prompt:string){
-    const model = this.generativeAi.getGenerativeModel({model: 'gemini-pro'});
+    const model = this.generativeAi.getGenerativeModel({model: 'gemini-2.0-flash'});
     this.messageHistory.next({
       from: 'user',
       message: prompt
@@ -33,7 +34,8 @@ export class GeminiService {
     return text
   }
   async generatePreMadeText(prompt:string){
-    const model = this.generativeAi.getGenerativeModel({model: 'gemini-pro'});
+    console.log("Gemini API Key in generatePreMadeText:", environment.googleGenerativeAIKey);
+    const model = this.generativeAi.getGenerativeModel({model: 'gemini-2.0-flash'});
     const result = await model.generateContent(prompt);
 
     const response = await result.response;
@@ -43,7 +45,7 @@ export class GeminiService {
     return text
   }
   async generateTextJson(prompt: string): Promise<any> {
-    const model = this.generativeAi.getGenerativeModel({ model: 'gemini-pro' });
+    const model = this.generativeAi.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
     this.messageHistory.next({
       from: 'user',
