@@ -2,10 +2,20 @@
 
 
 .container {
-    min-height: 100vh;
-	display: grid;
-	place-items: center;
-	background-color: var(--white);
+	  /* If you want it to at least fill the screen, keep min-height: 100vh. Otherwise, remove it. */
+	  min-height: 100vh; 
+    
+	  /* Switch to block or a simpler flex layout */
+	  display: grid; 
+	  background-color: var(--white);
+	  
+	  /* Remove overflow: hidden to avoid cutting off content */
+	  /* overflow: hidden; */
+  
+	  /* Optionally add some padding if you want space at the top/bottom */
+	  place-items: center; 
+	  min-width: 100vw;
+	  padding: 2rem 0;
 }
 
 .vertical-text {
@@ -30,14 +40,14 @@
   /* Left side: WELLNESS */
   .wellness-text {
     left: 20%;
-    top: 50%;
+    top: 30%;
     transform: translateY(-50%);
   }
   
   /* Right side: BALANCE */
   .balance-text {
     right: 20%;
-    top: 50%;
+    top: 30%;
     transform: translateY(-50%);
   }
 
@@ -95,6 +105,238 @@
 }
 .signature svg path {
 	fill: #323232;
+}
+/* New Info Section Styles */
+.info-section {
+    margin-top: 20px;
+    text-align: center;
+    padding: 2em;
+    background: #f1f8ff;
+    border-radius: 10px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.info-section h2 {
+    font-family: "Raleway", sans-serif;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1.5em;
+}
+
+.info-box {
+    display: inline-block;
+    text-align: center;
+    background: #ffffff;
+    padding: 1em;
+    border-radius: 10px;
+    margin: 1em;
+    width: 200px;
+}
+
+.info-bubble {
+    font-size: 3rem;
+    color: #4CAF50; /* Green color */
+    background-color: #f1f8ff;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-text {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* Font Awesome icon styles */
+.fas {
+    font-size: 2.5rem;
+    color: #333;
+}
+.features-section {
+    background-color: #1a2b56; /* Dark blue background */
+    color: white; /* White text for contrast */
+    text-align: center; /* Center the text */
+    padding: 4em 1em;
+	width: 100vw;
+}
+
+
+.features-section h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .tagline {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+  .features-text {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .wave-divider {
+    width: 80px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 1rem auto;
+  }
+
+  .feature-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 1rem auto;
+    text-align: left;
+    color: #fff;
+  }
+  .feature-highlights li {
+    margin: 0.75rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 1.1rem;
+  }
+  .feature-highlights li::before {
+    content: '➜';
+    position: absolute;
+    left: 0;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .features-section {
+    opacity: 0;
+    animation: fadeIn 1.2s forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+.feature-highlights {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 30px;
+}
+
+.feature-highlights .drop {
+    width: 400px; /* Increase bubble size */
+    height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    box-shadow: inset 20px 20px 20px rgba(0,0,0,0.05),
+                25px 35px 20px rgba(0,0,0,0.05),
+                25px 20px 20px rgba(0,0,0,0.05),
+                inset 25px 30px 30px rgba(255,255,255,0.9);
+    animation: slide 3s linear;
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.feature-highlights .drop:nth-child(1) {
+    border-radius: 67% 33% 28% 72% / 59% 52% 48% 41%;
+    margin: 20px 30px 30px 0;
+}
+.feature-highlights .drop:nth-child(2) {
+    border-radius: 15% 85% 53% 47% / 55% 41% 59% 45%;
+    margin: 20px 30px 30px 0;
+}
+.feature-highlights .drop:nth-child(3) {
+    border-radius: 50% 50% 30% 70% / 60% 40% 60% 40%;
+    margin: 20px 30px 30px 0;
+}
+
+.feature-highlights .drop::before {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background-color: #ffffffc8;
+    top: 60px;
+    left: 80px;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+.feature-highlights .drop::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #ffffffc8;
+    top: 90px;
+    left: 110px;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.feature-highlights .drop .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 40px 60px;
+    gap: 15px;
+}
+
+.feature-highlights .drop .content h2 {
+    margin-bottom: 15px;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: var(--clr);
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.1),
+                inset -2px -5px 10px rgba(255,255,255,1),
+                15px 15px 10px rgba(0,0,0,0.05),
+                15px 10px 15px rgba(0,0,0,0.25);
+}
+
+/* Remove or adjust this media query to keep them large on smaller screens */
+@media only screen and (max-width:1200px) {
+    .feature-highlights .drop {
+        width: 350px; /* or some other size */
+        height: 350px;
+    }
+    .feature-highlights {
+        flex-direction: column;
+    }
+}
+@media only screen and (max-width:600px) {
+    .feature-highlights {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 768px) {
