@@ -83,46 +83,60 @@ export class FindLoansComponent {
   
     sendInterestData() {
   
-      const prompt = `Find Education Grants related to ${this.selectedGrantInterests.join(', ')} for students planning to attend ${this.school}.When you write it out make easily digestible and visually pleasing for the user to see.Make sure the information is up-to-date and includes working links to the application or official websites.
+      const prompt = `Find Education Grants related to ${this.selectedGrantInterests.join(', ')} for students planning to attend ${this.school}.
+Please return the data in valid JSON with an array called "grants", 
+where each grant has:
+- "title"
+- "description"
+- "link"
+- "deadline"
+- "eligibility"
+
   `;
       this.sendPremadeData(prompt);
     }
   
     async sendPremadeData(premadePrompt?: string) {
       const promptToSend = premadePrompt || this.prompt;
-      console.log(promptToSend)
       if (promptToSend) {
         this.loading = true;
         this.premadResponse = '';
         try {
           let responseText = await this.geminiService.generatePreMadeText(promptToSend);
-          console.log("Raw API Response:", responseText);
-  
-          // Remove markdown code block markers if present
-          if (responseText.startsWith("```")) {
-            responseText = responseText.replace(/^```[^\n]*\n/, "").replace(/\n```$/, "").trim();
+    
+          // If the response includes ``` code block markers, remove them
+          if (responseText.startsWith('```')) {
+            responseText = responseText.replace(/^```[^\n]*\n/, '').replace(/\n```$/, '').trim();
           }
-  
-          // Attempt to parse the cleaned responseText
+    
+          // Attempt to parse JSON
           try {
             const parsed = JSON.parse(responseText);
+    
+            // Check if parsed.grants is an array
             if (parsed.grants && Array.isArray(parsed.grants)) {
+              // Store in a component property
               this.grants = parsed.grants;
             } else {
-              console.error("Parsed JSON does not contain a valid scholarships array.");
+              console.error("JSON does not contain a 'grants' array:", parsed);
               this.grants = [];
             }
           } catch (jsonError) {
             console.error("Error parsing JSON:", jsonError);
             this.grants = [];
           }
+    
+          // Optionally store the raw text if you want to show it somewhere
           this.premadResponse = responseText;
+    
         } catch (error) {
           console.error("Error calling Gemini API:", error);
+        } finally {
+          this.loading = false;
         }
-        this.loading = false;
       }
     }
+    
   
     constructor(private geminiService: GeminiService) { 
 

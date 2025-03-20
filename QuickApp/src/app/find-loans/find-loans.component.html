@@ -51,7 +51,7 @@
       </div>
       
       <div class="submit-container">
-        <button (click)="sendInterestData()">Feeling Lucky</button>
+        <button (click)="sendInterestData()">Search</button>
       </div>
   
       <!-- Bot Response -->
@@ -60,8 +60,24 @@
           <p>thinking...</p>
         </div>
       </div>
-  
-      <pre class="detailed-response" *ngIf="!loading && premadResponse">{{ premadResponse }}</pre>
+        <!-- ... other parts of the template ... -->
+
+<div class="grants-list" *ngIf="grants && grants.length > 0">
+  <h2>Grant Opportunities</h2>
+  <div class="grant-item" *ngFor="let grant of grants">
+    <h3>{{ grant.title }}</h3>
+    <p><strong>Description:</strong> {{ grant.description }}</p>
+    <p><strong>Deadline:</strong> {{ grant.deadline || 'N/A' }}</p>
+    <p><strong>Eligibility:</strong> {{ grant.eligibility }}</p>
+  </div>
+</div>
+
+<!-- If no grants found -->
+<div *ngIf="grants && grants.length === 0">
+
+</div>
+
+
       
     </div>
   </div>

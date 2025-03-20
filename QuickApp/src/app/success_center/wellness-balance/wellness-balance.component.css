@@ -160,7 +160,7 @@
     color: #333;
 }
 .features-section {
-    background-color: #1a2b56; /* Dark blue background */
+    background-color: #c08a3a; /* Dark blue background */
     color: white; /* White text for contrast */
     text-align: center; /* Center the text */
     padding: 4em 1em;
@@ -342,5 +342,9 @@
 @media (max-width: 768px) {
     .wellness-text, .balance-text {
         display: none;
+    }
+
+    .features-text{
+        font-size: small;
     }
 }

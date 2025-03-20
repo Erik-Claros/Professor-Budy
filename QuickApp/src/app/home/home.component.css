@@ -1,5 +1,6 @@
 /* Hero Section Styles */
 
+
 .hero-section {
     display: flex;
     align-items: center;
@@ -26,6 +27,15 @@
     background: rgba(0, 0, 0, 0.5); /* Dark overlay */
     z-index: 1;
 }
+
+.signature {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem; /* Adjust as needed */
+  text-align: right;
+  margin-top: 1rem;
+  color: #fff; /* Or any color that fits your design */
+}
+
 
 .hero-content {
     position: relative;

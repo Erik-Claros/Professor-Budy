@@ -1,0 +1,92 @@
+/* === COLORS === */
+.cyan { background-color: hsl(185, 86%, 70%); color: hsl(185, 86%, 10%); }
+.yellow { background-color: hsl(54, 93%, 66%); color: hsl(54, 93%, 8%); }
+.purple { background-color: rgb(96, 64, 176); }
+.green { background-color: hsl(87, 78%, 63%); color: hsl(87, 78%, 10%); }
+.red { background-color: hsl(338, 76%, 58%); color: hsl(338, 76%, 92%); }
+.blue { background-color: hsl(214, 78%, 61%); color: hsl(214, 78%, 93%); }
+.orange { background-color: rgb(230, 117, 64); }
+
+/* === GRID === */
+.cs1 { grid-column: span 1; }
+.cs2 { grid-column: span 2; }
+.cs3 { grid-column: span 3; }
+.cs4 { grid-column: span 4; }
+.rs2 { grid-row: span 2; }
+.rs3 { grid-row: span 3; }
+.rs4 { grid-row: span 4; }
+.vlr {
+  text-orientation: mixed;
+  writing-mode: vertical-rl;
+}
+
+/* === TAGS === */
+article {
+  /* Increased the minimum font size for small screens */
+  font-size: clamp(1rem, 0.5rem + 2vw, 1.4rem);
+  line-height: 1.5;
+  padding: clamp(0.75rem, 0.3rem + 2vw, 1.2rem);
+  text-align: center;
+}
+
+body {
+  background-color: hsl(180, 25%, 15%);
+  margin: 0;
+}
+
+b {
+  display: grid;
+  padding: 0.5ch;
+  place-content: center;
+  text-align: center;
+}
+
+cite {
+  /* Slightly bigger min size for small screens */
+  font-size: clamp(0.65rem, 0.4rem + 1vw, 1rem);
+  font-weight: 300;
+  white-space: nowrap;
+}
+cite::before { content: "— "; }
+
+h1 {
+  font-size: clamp(1.2rem, 0.5182rem + 3.4091vw, 2.7rem);
+  grid-column: 1 / span 7;
+  grid-row-start: 9 / span 2;
+  line-height: 1.1;
+  padding-inline: 0.25ch;
+  text-align: center;
+}
+
+main {
+  grid-auto-rows: minmax(auto, auto);
+  width: 100%;
+  min-height: 100vh;
+  background: darkslategray;
+  color: hsl(182, 19%, 92%);
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin: 0;
+  overflow: auto; /* Ensures scrolling if content overflows */
+  padding-top: 100px;
+}
+
+/* Increased minimum font sizes for q elements */
+q {
+  font-size: clamp(1rem, 0.5rem + 2.5vw, 2rem);
+  line-height: 1;
+  margin-block-end: 0.25ch;
+}
+
+q.md {
+  font-size: clamp(0.9rem, 0.4rem + 2vw, 1.8rem);
+}
+
+@media (max-width: 500px) {
+  article {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    place-self: start;
+  }
+}

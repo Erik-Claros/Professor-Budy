@@ -1,10 +1,10 @@
 .container {
     width: 100%; /* Adjust width as needed */
    /* Optional: Limit maximum width */
-    margin: 0 auto; /* Centers the container horizontally */
     padding: 20px; /* Optional: Add padding */
     justify-content: center;
     align-items: center;
+    display: flex;
   }
 
 .intro-screen {

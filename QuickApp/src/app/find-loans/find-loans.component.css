@@ -10,6 +10,76 @@
     background: linear-gradient(135deg, #001f3f, #000000); /* Dark blue to black gradient */
     color: #fff;
   }
+
+  /* Grants List Container */
+/* Grants List Container */
+.grants-list {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.05); /* Subtle transparency */
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+  color: #ddd; /* Light text for contrast on dark background */
+}
+
+/* Heading for the Grants Section */
+.grants-list h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #fff;
+  text-align: center;
+}
+
+/* Individual Grant Card */
+.grant-item {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+/* Hover Effect */
+.grant-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 3px 8px rgba(255, 255, 255, 0.15);
+}
+
+/* Grant Title */
+.grant-item h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+/* Grant Details */
+.grant-item p {
+  margin: 6px 0;
+  line-height: 1.5;
+  color: #ccc; /* Slightly lighter than the container color */
+}
+
+/* Apply Button / Link */
+.grant-item a {
+  display: inline-block;
+  margin-top: 10px;
+  background: #007bff;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.grant-item a:hover {
+  background: #0056b3;
+}
+
+
+  
   
   /* INTEREST CONTAINER (Solid Background) */
   .interest-container {

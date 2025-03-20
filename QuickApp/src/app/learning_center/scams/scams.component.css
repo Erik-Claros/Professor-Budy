@@ -1,0 +1,176 @@
+/* HERO SECTION */
+.hero-scams {
+    background: linear-gradient(135deg, #ff0037 0%, #b8001c 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    color: #fff;
+  }
+  
+  .hero-scams .hero-content {
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin-top: 80px;
+  }
+  
+  .hero-scams .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-scams .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* CTA BUTTON */
+  .cta-button {
+    background-color: #ff8a00;
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+  
+  .cta-button:hover,
+  .cta-button:focus {
+    opacity: 0.9;
+  }
+  
+  /* HIGHLIGHTS / QUICK STATS */
+  .scam-highlights {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #660000;
+    color: #fff;
+  }
+  
+  .scam-highlights h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .highlight-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .highlight-cards .card {
+    background: #fff;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 260px;
+    text-align: center;
+  }
+  
+  .highlight-cards .card i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #660000;
+  }
+  
+  .highlight-cards .card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+  
+  .highlight-cards .card p {
+    line-height: 1.4;
+  }
+  
+  /* MAIN CONTENT / LESSONS & RESEARCH */
+  .scam-lessons {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .scam-lessons h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #660000;
+  }
+  
+  .scam-lessons .lesson {
+    background: #fff;
+    color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .scam-lessons .lesson h3 {
+    margin-bottom: 0.75rem;
+  }
+  
+  .scam-lessons .lesson p {
+    margin-bottom: 0.75rem;
+  }
+  
+  .scam-lessons .lesson ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 0.75rem;
+  }
+  
+  /* FAQS & RESOURCES */
+  .scam-faqs {
+    background: #fff;
+    color: #333;
+    padding: 40px 20px;
+    margin: 20px auto;
+    max-width: 1000px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .scam-faqs h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .scam-faqs details {
+    margin-bottom: 10px;
+  }
+  
+  .scam-faqs summary {
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .scam-faqs p {
+    margin-top: 10px;
+  }
+  
+  /* NEXT STEPS */
+  .scam-next-steps {
+    background: #660000;
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px;
+  }
+  
+  .scam-next-steps h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .scam-next-steps p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+  }
+  
